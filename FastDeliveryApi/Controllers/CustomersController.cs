@@ -17,5 +17,5 @@ public ActionResult<IEnumerable<Customer>> Get()
 {
     var customers = _context.Customers.ToList();
     return Ok(customers);
-}
+ }
 }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FastDeliveryApi.Controllers;
 
 [ApiController]
-[Route("pepito")]
+[Route("Margarita")]
 public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
