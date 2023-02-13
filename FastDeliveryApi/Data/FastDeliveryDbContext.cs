@@ -6,8 +6,10 @@ namespace FastDeliveryApi.Data;
 
 public class FastDeliveryDbContext : DbContext
 {
-    public FastDeliveryDbContext(DbContextOptions options) : base(options)
-    {
+
+        public FastDeliveryDbContext(DbContextOptions options) : base(options)
+    
+   {
 
     }
     public DbSet<Customer>  Customers  { get; set; }

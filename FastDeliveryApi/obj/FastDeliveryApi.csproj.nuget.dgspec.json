@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Escritorio\\MODULO 1\\FastDeliveryApi\\FastDeliveryApi.csproj": {}
+    "D:\\Escritorio\\Modulo1\\Modulo1-1\\FastDeliveryApi\\FastDeliveryApi.csproj": {}
   },
   "projects": {
-    "d:\\Escritorio\\MODULO 1\\FastDeliveryApi\\FastDeliveryApi.csproj": {
+    "D:\\Escritorio\\Modulo1\\Modulo1-1\\FastDeliveryApi\\FastDeliveryApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Escritorio\\MODULO 1\\FastDeliveryApi\\FastDeliveryApi.csproj",
+        "projectUniqueName": "D:\\Escritorio\\Modulo1\\Modulo1-1\\FastDeliveryApi\\FastDeliveryApi.csproj",
         "projectName": "FastDeliveryApi",
-        "projectPath": "d:\\Escritorio\\MODULO 1\\FastDeliveryApi\\FastDeliveryApi.csproj",
+        "projectPath": "D:\\Escritorio\\Modulo1\\Modulo1-1\\FastDeliveryApi\\FastDeliveryApi.csproj",
         "packagesPath": "C:\\Users\\Sonia M. Segovia\\.nuget\\packages\\",
-        "outputPath": "d:\\Escritorio\\MODULO 1\\FastDeliveryApi\\obj\\",
+        "outputPath": "D:\\Escritorio\\Modulo1\\Modulo1-1\\FastDeliveryApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,6 +25,7 @@
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,6 +44,12 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -50,10 +57,6 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.1, )"
-            },
-            "Npgsql.EntityFrameworkCore.PostgreSQL.Design": {
-              "target": "Package",
-              "version": "[1.1.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
