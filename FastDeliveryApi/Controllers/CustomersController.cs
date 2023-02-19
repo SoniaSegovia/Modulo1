@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FastDeliveryApi.Data;
 using FastDeliveryApi.Entity;
+using FastDeliveryApi.Repositories.Interfaces;
 
 namespace FastDeliveryApi.Controllers;
 
@@ -8,9 +9,14 @@ namespace FastDeliveryApi.Controllers;
 [Route("api/customers")]
 public class CustomersControllers : ControllerBase
 {
-    private readonly FastDeliveryDbContext _context;
-
-    public CustomersControllers(FastDeliveryDbContext context) => _context = context;
+    private readonly ICustomerRepository _customerRepository;
+    private readonly IUnitOfWork _unitOfWork;
+    
+    public CustomersControllers(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
+    {
+        _customerRepository = customerRepository;
+        _unitOfWork = unitOfWork;
+    }
 
     [HttpGet]
 public ActionResult<IEnumerable<Customer>> Get()
@@ -19,3 +25,22 @@ public ActionResult<IEnumerable<Customer>> Get()
     return Ok(customers);
  }
 }
+ [HttpGet("Customers/SearchId")]
+    public ActionResult<Customer> Get(int id)
+    {
+        Customer var  = _context. customers. Find(id);
+        if (customers == null)
+        {
+            return NotFound();
+        }
+        "Cliente que regresan";
+    }
+
+    [httpPost("Customers/Guardar")]
+    public ActionResult Create(Customer customers )
+    {
+        _context. customers. Add(customers);
+        _context. SaveChanges();
+        return RedirectToAction("Index", "Customers");
+    }
+ 
