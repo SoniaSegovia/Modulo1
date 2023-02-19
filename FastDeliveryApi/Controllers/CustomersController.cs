@@ -11,7 +11,7 @@ public class CustomersControllers : ControllerBase
 {
     private readonly ICustomerRepository _customerRepository;
     private readonly IUnitOfWork _unitOfWork;
-    
+
     public CustomersControllers(ICustomerRepository customerRepository, IUnitOfWork unitOfWork)
     {
         _customerRepository = customerRepository;
@@ -21,7 +21,7 @@ public class CustomersControllers : ControllerBase
     [HttpGet]
 public ActionResult<IEnumerable<Customer>> Get()
 {
-    var customers = _context.Customers.ToList();
+    var customers = _customerRepository.GetAll();
     return Ok(customers);
  }
 }
