@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.addScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.addScoped<ICustomerRepository, CustomerRepository>();
 
 var connectionString = builder.Configuration.GetConnectionString("MyDbPgsql");
