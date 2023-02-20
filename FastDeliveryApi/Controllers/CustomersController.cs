@@ -50,11 +50,24 @@ public class CustomersControllers : ControllerBase
  [HttpPut("{id:int}")]
 public async Task<IActionResult> UpdateCustomer(int id, [FromBody] UpdateCustomerRequest request, CancellationToken cancellationToken)
   {   
+    if (request.Id != id)
+    {
+        return BadRequest("Body Id is not equal than URL Id");
+    }
+
       var customer = await _customerRepository.GetCustomerById(id);
       if (customer is null )
      {
          return NotFound($"Customer Not Found with the Id {id}");
      }
+
+     
+        customer.ChangeName(request.Name);
+        customer.ChangePhoneNumber(request.PhoneNumber);
+        customer.ChangeAddress(request.Address);
+        customer.ChangeEmail(request.Email);
+        customer.ChangeStatus(request.Status);
+
      _customerRepository.Update(customer);
 
      await _unitOfWork.SaveChangesAsync();
