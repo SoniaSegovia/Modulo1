@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
+using Mapster; 
 
 using FastDeliveryApi.Data;
 using FastDeliveryApi.Entity;
 using FastDeliveryApi.Repositories.Interfaces;
 using FastDeliveryApi.Models;
+
 
 namespace FastDeliveryApi.Controllers;
 
@@ -30,21 +32,20 @@ public class CustomersControllers : ControllerBase
  [HttpPost]
  public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerRequest request, CancellationToken cancellationToken)
     {
-     var customer = new Customer(
-        request.Name,
-        request.PhoneNumber,
-        request.Email,
-        request.Address
-     );
+
+     var customer = request.Adapt<Customer>();
 
      _customerRepository.Add(customer);
 
      await _unitOfWork.SaveChangesAsync();
 
+      var  response = customer.Adapt<CustomerResponse>();
+
+
      return CreatedAction(
         nameof(GetCustomerById), 
-        new { id = customer.Id},
-         customer);
+        new { id = response.Id},
+         response);
     }  
     
  [HttpPut("{id:int}")]
@@ -79,13 +80,16 @@ public async Task<IActionResult> UpdateCustomer(int id, [FromBody] UpdateCustome
 public async Task<IActionResult> GetCustomerById(int id, CancellationToken cancellationToken)
 
  {
-    var customer = await _customerRepository.GetCustomerById(id);
+    var customer = await _customerRepository.GetCustomerById(id, cancellationToken);
     if (customer is null )
     {
         return NotFound($"Customer Not Found with the Id {id}");
 
     }
-    return OK(customer);
+    
+    var  response = customer.Adapt<CustomerResponse>();
+
+    return OK(response);
  }
 
 }
