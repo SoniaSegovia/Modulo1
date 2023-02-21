@@ -49,6 +49,10 @@ public class ExceptionMiddleware
                  case BadRequestException badRequestException:
                  statusCode = HttpStatusCode.BadRequest;
                  errorDetails.ErrorType ="Bad Request";
+                 break;
+                 case CreditLimitException creditLimitException:
+                 statusCode = HttpStatusCode.BadRequest;
+                 errorDetails.ErrorType ="Bad Request";
 
            default:
            break;

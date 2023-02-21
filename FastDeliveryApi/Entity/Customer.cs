@@ -24,6 +24,8 @@ public class Customer : IAuditableEntity
   public string Email { get; private set; }
   public string Address { get; private set; }
   public bool Status { get;  private set; }
+
+  public  decimal CreditLimit{get; set ;}
 public DateTime CreatedOnUtc {get ; set ;}
 public DateTime? ModifiedOnUtc {get ; set ;}
 
@@ -33,6 +35,15 @@ public void ChangeName(string name )
    {
      Name = name;
    }
+}
+
+public void IncrementCreditLimit(decimal credit)
+{
+  if (credit > 5000)
+  {
+    throw new CreditLimitException(Name);
+  }
+  CreditLimit = credit;
 }
 
 public void ChangePhoneNumber(string phoneNumber )

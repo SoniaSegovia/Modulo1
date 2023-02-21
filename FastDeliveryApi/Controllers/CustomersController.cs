@@ -68,6 +68,7 @@ public async Task<IActionResult> UpdateCustomer(int id, [FromBody] UpdateCustome
         customer.ChangeAddress(request.Address);
         customer.ChangeEmail(request.Email);
         customer.ChangeStatus(request.Status);
+        customer.IncrementCreditLimit(request.CreditLimit);
 
      _customerRepository.Update(customer);
 

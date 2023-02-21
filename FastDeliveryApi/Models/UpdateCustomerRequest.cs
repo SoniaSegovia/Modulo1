@@ -7,7 +7,8 @@ public record UpdateCustomerRequest(
     string PhoneNumber,
     string Email,
     string Address,
-    bool Status
+    bool Status,
+    decimal CreditLimit
    
 
 );
