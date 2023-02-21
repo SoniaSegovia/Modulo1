@@ -53,13 +53,13 @@ public async Task<IActionResult> UpdateCustomer(int id, [FromBody] UpdateCustome
   {   
     if (request.Id != id)
     {
-        return BadRequest("Body Id is not equal than URL Id");
+        throw new  BadRequestException("Body Id is not equal than URL Id");
     }
 
       var customer = await _customerRepository.GetCustomerById(id);
       if (customer is null )
      {
-         return NotFound($"Customer Not Found with the Id {id}");
+        throw new NotFoundException("Customer", id);
      }
 
      
@@ -83,8 +83,7 @@ public async Task<IActionResult> GetCustomerById(int id, CancellationToken cance
     var customer = await _customerRepository.GetCustomerById(id, cancellationToken);
     if (customer is null )
     {
-        return NotFound($"Customer Not Found with the Id {id}");
-
+        throw new  NotFoundException("Customer", id);
     }
     
     var  response = customer.Adapt<CustomerResponse>();
