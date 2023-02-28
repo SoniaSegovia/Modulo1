@@ -5,6 +5,7 @@ using FastDeliveryApi.Data;
 using FastDeliveryApi.Entity;
 using FastDeliveryApi.Repositories.Interfaces;
 using FastDeliveryApi.Models;
+using FastDeliveryApi.Exceptions;
 
 
 namespace FastDeliveryApi.Controllers;

@@ -32,6 +32,10 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
                 .IsRequired()
                 .HasMaxLength(120);
 
+        builder.Property(b => b.CreditLimit)
+                .HasColumnType("decimal(19, 2)")
+                .IsRequired();
+
         builder.HasData(
                 new Customer
                 {
